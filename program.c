@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:25:14 by otodd             #+#    #+#             */
-/*   Updated: 2024/02/13 15:07:29 by otodd            ###   ########.fr       */
+/*   Updated: 2024/03/26 16:39:43 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -781,6 +781,7 @@ void	test_all_format_specifiers_in_one(void)
 	size_t			i = 0;
 	size_t			j = 0;
 	size_t			k = 0;
+	int				fd = open("./test.txt", O_RDWR | O_CREAT);
 
 	char_array = (char **)malloc(sizeof(char *) * len);
 	for (j = 0; j < len; j++)
@@ -806,7 +807,7 @@ void	test_all_format_specifiers_in_one(void)
 		i++;
 	}
 	printf("\n%s\n", EDGES);
-	ft_printf("This is a test that contains all the standard and custom format specifiers in one call: \n%c\n%s\n%d\n%i\n%x\n%X\n%p\n%u\n%a\n%n\n%nx\n%nX\n%nb\n%no\n%l\n%L\n%Lx\n%LX\n%Lb\n%Lo\n",
+	ft_fprintf(fd, "This is a test that contains all the standard and custom format specifiers in one call: \n%c\n%s\n%d\n%i\n%x\n%X\n%p\n%u\n%a\n%n\n%nx\n%nX\n%nb\n%no\n%l\n%L\n%Lx\n%LX\n%Lb\n%Lo\n",
 		test_char,
 		test_str,
 		test_int_val,
@@ -830,6 +831,7 @@ void	test_all_format_specifiers_in_one(void)
 		int_list,
 		int_list,
 		int_list);
+	close(fd);
 	printf("\n%s\n", EDGES);
 	ft_lstclear(&int_list, free);
 	ft_lstclear(&char_list, free);
