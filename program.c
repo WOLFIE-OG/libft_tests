@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:25:14 by otodd             #+#    #+#             */
-/*   Updated: 2024/12/03 18:46:34 by otodd            ###   ########.fr       */
+/*   Updated: 2024/12/03 23:07:27 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -574,10 +574,10 @@ void	test_range(void)
 
 void	test_swap(void)
 {
-	char	tmp = 'a';
-	char	tmp2 = 'b';
-	char	*a = &tmp;
-	char	*b = &tmp2;
+	int		tmp = 'a';
+	int		tmp2 = 'b';
+	int		*a = &tmp;
+	int		*b = &tmp2;
 
 	ft_swap(a, b);
 	assert_char(*b, 'a', (char *)__func__);
@@ -635,7 +635,6 @@ void	test_standard_format_specifiers(void)
 	char			*test_str = "|I AM A TEST STRINGS|";
 	int				test_int_val = INT_MIN;
 	int				*test_int_ptr = &test_int_val;
-	unsigned int	test_unsigned_int = 123456;
 
 	printf("\n%s\n", EDGES);
 	printf("\n    Own:          "BLU"%d"RESET" chars\n\n", ft_printf("This is "BGRN"%c"RESET" test for char.", test_char));
@@ -681,8 +680,8 @@ void	test_custom_format_specifiers(void)
 	char	**char_array;
 	int		*int_array;
 	int		*int_array_head;
-	t_list	**int_list = NULL;
-	t_list	**char_list = NULL;
+	t_list	*int_list = NULL;
+	t_list	*char_list = NULL;
 	t_list	*new_node = NULL;
 	char	*content_char = NULL;
 	int		*content_int = NULL;
@@ -710,11 +709,11 @@ void	test_custom_format_specifiers(void)
 		content_char = malloc(sizeof(char) * i);
 		sprintf(content_char, "This is "BGRN"%d"RESET, int_array[i]);
 		new_node = ft_lstnew(content_char);
-		ft_lstadd_back(char_list, new_node);
+		ft_lstadd_back(&char_list, new_node);
 		content_int = malloc(sizeof(int));
 		*content_int = i;
 		new_node = ft_lstnew(content_int);
-		ft_lstadd_back(int_list, new_node);
+		ft_lstadd_back(&int_list, new_node);
 		i++;
 	}
 	printf("\n%s\n", EDGES);
@@ -753,8 +752,8 @@ void	test_custom_format_specifiers(void)
 	printf("\n%s\n", EDGES);
 	ft_printf("This is a linked list that contains integers in base 8: "BGRN"%Lo\n"RESET, int_list);
 	printf("\n%s\n", EDGES);
-	ft_lstclear(int_list, free);
-	ft_lstclear(char_list, free);
+	ft_lstclear(&int_list, free);
+	ft_lstclear(&char_list, free);
 	ft_free_array(char_array, ft_strarraylen(char_array));
 	free(char_array);
 	free(int_array);
@@ -771,8 +770,8 @@ void	test_all_format_specifiers_in_one(void)
 	char			**char_array;
 	int				*int_array;
 	int				*int_array_head;
-	t_list			**int_list = NULL;
-	t_list			**char_list = NULL;
+	t_list			*int_list = NULL;
+	t_list			*char_list = NULL;
 	t_list			*new_node = NULL;
 	char			*content_char = NULL;
 	int				*content_int = NULL;
@@ -799,11 +798,11 @@ void	test_all_format_specifiers_in_one(void)
 		content_char = malloc(sizeof(char) * i);
 		sprintf(content_char, "Index: %d", int_array[i]);
 		new_node = ft_lstnew(content_char);
-		ft_lstadd_back(char_list, new_node);
+		ft_lstadd_back(&char_list, new_node);
 		content_int = malloc(sizeof(int));
 		*content_int = i;
 		new_node = ft_lstnew(content_int);
-		ft_lstadd_back(int_list, new_node);
+		ft_lstadd_back(&int_list, new_node);
 		i++;
 	}
 	printf("\n%s\n", EDGES);
@@ -833,8 +832,8 @@ void	test_all_format_specifiers_in_one(void)
 		int_list);
 	close(fd);
 	printf("\n%s\n", EDGES);
-	ft_lstclear(int_list, free);
-	ft_lstclear(char_list, free);
+	ft_lstclear(&int_list, free);
+	ft_lstclear(&char_list, free);
 	ft_free_array(char_array, ft_strarraylen(char_array));
 	free(char_array);
 	free(int_array);
