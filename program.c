@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:25:14 by otodd             #+#    #+#             */
-/*   Updated: 2024/03/26 16:39:43 by otodd            ###   ########.fr       */
+/*   Updated: 2024/12/03 18:46:34 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -710,11 +710,11 @@ void	test_custom_format_specifiers(void)
 		content_char = malloc(sizeof(char) * i);
 		sprintf(content_char, "This is "BGRN"%d"RESET, int_array[i]);
 		new_node = ft_lstnew(content_char);
-		ft_lstadd_back(&char_list, new_node);
+		ft_lstadd_back(char_list, new_node);
 		content_int = malloc(sizeof(int));
 		*content_int = i;
 		new_node = ft_lstnew(content_int);
-		ft_lstadd_back(&int_list, new_node);
+		ft_lstadd_back(int_list, new_node);
 		i++;
 	}
 	printf("\n%s\n", EDGES);
@@ -753,8 +753,8 @@ void	test_custom_format_specifiers(void)
 	printf("\n%s\n", EDGES);
 	ft_printf("This is a linked list that contains integers in base 8: "BGRN"%Lo\n"RESET, int_list);
 	printf("\n%s\n", EDGES);
-	ft_lstclear(&int_list, free);
-	ft_lstclear(&char_list, free);
+	ft_lstclear(int_list, free);
+	ft_lstclear(char_list, free);
 	ft_free_array(char_array, ft_strarraylen(char_array));
 	free(char_array);
 	free(int_array);
@@ -799,11 +799,11 @@ void	test_all_format_specifiers_in_one(void)
 		content_char = malloc(sizeof(char) * i);
 		sprintf(content_char, "Index: %d", int_array[i]);
 		new_node = ft_lstnew(content_char);
-		ft_lstadd_back(&char_list, new_node);
+		ft_lstadd_back(char_list, new_node);
 		content_int = malloc(sizeof(int));
 		*content_int = i;
 		new_node = ft_lstnew(content_int);
-		ft_lstadd_back(&int_list, new_node);
+		ft_lstadd_back(int_list, new_node);
 		i++;
 	}
 	printf("\n%s\n", EDGES);
@@ -833,8 +833,8 @@ void	test_all_format_specifiers_in_one(void)
 		int_list);
 	close(fd);
 	printf("\n%s\n", EDGES);
-	ft_lstclear(&int_list, free);
-	ft_lstclear(&char_list, free);
+	ft_lstclear(int_list, free);
+	ft_lstclear(char_list, free);
 	ft_free_array(char_array, ft_strarraylen(char_array));
 	free(char_array);
 	free(int_array);
